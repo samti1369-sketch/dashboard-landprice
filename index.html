@@ -190,7 +190,7 @@
     </div>
   </div>
 
-  <footer>Executive Dashboard · แหล่งข้อมูล: Google Sheets (CSV) · เหมาะสำหรับ GitHub Pages</footer>
+  <footer>Executive Dashboard · แหล่งข้อมูล: Google Sheets (CSV) · เหมาะสำหรับ GitHub Pages · รีเฟรชหน้าเมื่อมีการอัปเดตข้อมูล</footer>
 </div>
 
 <script>
@@ -200,9 +200,14 @@ const LAKE_PATH="m192.8,878.5 0.6-0.5 1.9,0.4 0.8-0.2 1.1-1.1 0,0 0.9-0.2 1.8,3.
 // ===== Embedded data =====
 let RAW = [];
 
-// ===== Google Sheets / CSV data source =====
+// ===== ตั้งค่าแหล่งข้อมูล Google Sheets =====
+// วิธีใช้:
+// 1) ตั้งค่า Share ของ Google Sheet เป็น Anyone with the link = Viewer
+// 2) หากข้อมูลไม่ได้อยู่ชีตแรก ให้เปลี่ยน GOOGLE_SHEET_GID ให้ตรงกับเลข gid ใน URL ของชีตนั้น
+// 3) อัปเดตข้อมูลใน Google Sheet แล้วหน้า dashboard จะดึงข้อมูลใหม่อัตโนมัติเมื่อรีเฟรชหน้า
 const GOOGLE_SHEET_ID = '1GQ_C5oErGAeuVL8u1IDTjhX4TByjhAip7Nd0tAKZ8No';
-const GOOGLE_SHEET_GID = '0'; // เปลี่ยนค่าได้หากใช้ชีตอื่น
+const GOOGLE_SHEET_GID = '0';
+const GOOGLE_SHEET_EDIT_URL = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/edit?gid=${GOOGLE_SHEET_GID}`;
 const GOOGLE_SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/export?format=csv&gid=${GOOGLE_SHEET_GID}`;
 
 function parseCSV(text) {
